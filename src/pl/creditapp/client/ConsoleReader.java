@@ -1,6 +1,7 @@
 package pl.creditapp.client;
 
-import pl.creditapp.core.Person;
+
+import pl.creditapp.core.model.*;
 
 import java.util.Scanner;
 
@@ -16,15 +17,27 @@ public class ConsoleReader {
         System.out.println("Enter your mohters maiden name: ");
         String mothersMaidenName = in.next();
 
-        System.out.println("Enter total monthly income in PLN: ");
-        double income = in.nextDouble();
+        System.out.println("What is your marital status? (SINGLE, MARRIED, DIVORCED, WIDOWED, SEPARATED)");
+        MaritalStatus maritalStatus = MaritalStatus.valueOf(in.next());
 
-        System.out.println("Are you married: ");
-        boolean married = in.nextBoolean();
+        System.out.println("What is your education level? (NONE, PRIMARY, MIDDLE, SECONDARY, POST_SECONDARY, TERTIARY)");
+        Education education = Education.valueOf(in.next());
+
+        System.out.println("Enter your email addreess: ");
+        String email = in.next();
+
+        System.out.println("Enter your phone number: ");
+        String phoneNumber = in.next();
+
+        System.out.println("Enter total monthly income in PLN");
+        double income=in.nextDouble();
 
         System.out.println("Enter number of family dependants (including applicant): ");
         int numOfDependants = in.nextInt();
 
-        return new Person(name, lastName, mothersMaidenName, income, married, numOfDependants);
+        PersonalData personalData= new PersonalData(name, lastName, mothersMaidenName, income, maritalStatus, education, numOfDependants);
+        ContactData contactData = new ContactData(email, phoneNumber );
+
+        return new Person(personalData, contactData);
     }
 }

@@ -2,7 +2,8 @@ package pl.creditapp;
 
 import pl.creditapp.client.ConsoleReader;
 import pl.creditapp.core.CreditApplicationService;
-import pl.creditapp.core.Person;
+import pl.creditapp.core.model.Person;
+
 
 public class Main {
 
