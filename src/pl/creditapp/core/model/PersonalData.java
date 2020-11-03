@@ -1,6 +1,6 @@
-package pl.creditapp.core;
+package pl.creditapp.core.model;
 
-public class Person {
+public class PersonalData {
     private final String name;
     private final String lastName;
     private final String mothersMaidenName;
@@ -9,7 +9,7 @@ public class Person {
     private final int numOfDependants;
 
 
-    public Person(String name, String lastName, String mothersMaidenName, double totalMonthlyIncomeInPln, boolean married, int numOfDependants) {
+    public PersonalData(String name, String lastName, String mothersMaidenName, double totalMonthlyIncomeInPln, boolean married, int numOfDependants) {
         this.name = name;
         this.lastName = lastName;
         this.mothersMaidenName = mothersMaidenName;
