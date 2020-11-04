@@ -6,7 +6,7 @@ import pl.creditapp.core.model.*;
 import java.util.Scanner;
 
 public class ConsoleReader {
-    public Person readInputParameters(){
+    public Person readInputParameters() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter your name: ");
         String name = in.next();
@@ -30,13 +30,20 @@ public class ConsoleReader {
         String phoneNumber = in.next();
 
         System.out.println("Enter total monthly income in PLN");
-        double income=in.nextDouble();
+        double income = in.nextDouble();
 
         System.out.println("Enter number of family dependants (including applicant): ");
         int numOfDependants = in.nextInt();
 
-        PersonalData personalData= new PersonalData(name, lastName, mothersMaidenName, income, maritalStatus, education, numOfDependants);
-        ContactData contactData = new ContactData(email, phoneNumber );
+        System.out.println("What's purpose of loan? MORTGAGE | PERSONAL_LOAN");
+        PurposeOfLoanType purposeOfLoanType = PurposeOfLoanType.valueOf(in.next());
+
+        System.out.println("Enter total monthly income in PLN: ");
+        double purposeOfLoanAmount = in.nextDouble();
+
+        PersonalData personalData = new PersonalData(name, lastName, mothersMaidenName, income, maritalStatus, education, numOfDependants);
+        ContactData contactData = new ContactData(email, phoneNumber);
+        PurposeOfLoan purposeOfLoan = new PurposeOfLoan(purposeOfLoanType, purposeOfLoanAmount);
 
         return new Person(personalData, contactData);
     }
