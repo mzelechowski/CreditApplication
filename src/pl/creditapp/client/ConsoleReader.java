@@ -6,7 +6,7 @@ import pl.creditapp.core.model.*;
 import java.util.Scanner;
 
 public class ConsoleReader {
-    public Person readInputParameters() {
+    public CreditApplication readInputParameters() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter your name: ");
         String name = in.next();
@@ -14,7 +14,7 @@ public class ConsoleReader {
         System.out.println("Enter your last name: ");
         String lastName = in.next();
 
-        System.out.println("Enter your mohters maiden name: ");
+        System.out.println("Enter your mothers maiden name: ");
         String mothersMaidenName = in.next();
 
         System.out.println("What is your marital status? (SINGLE, MARRIED, DIVORCED, WIDOWED, SEPARATED)");
@@ -23,7 +23,7 @@ public class ConsoleReader {
         System.out.println("What is your education level? (NONE, PRIMARY, MIDDLE, SECONDARY, POST_SECONDARY, TERTIARY)");
         Education education = Education.valueOf(in.next());
 
-        System.out.println("Enter your email addreess: ");
+        System.out.println("Enter your email address: ");
         String email = in.next();
 
         System.out.println("Enter your phone number: ");
@@ -38,13 +38,16 @@ public class ConsoleReader {
         System.out.println("What's purpose of loan? MORTGAGE | PERSONAL_LOAN");
         PurposeOfLoanType purposeOfLoanType = PurposeOfLoanType.valueOf(in.next());
 
-        System.out.println("Enter total monthly income in PLN: ");
+        System.out.println("Enter loan amount: ");
         double purposeOfLoanAmount = in.nextDouble();
+
+        System.out.println("Enter loan period (in years): ");
+        int period = in.nextInt();
 
         PersonalData personalData = new PersonalData(name, lastName, mothersMaidenName, income, maritalStatus, education, numOfDependants);
         ContactData contactData = new ContactData(email, phoneNumber);
-        PurposeOfLoan purposeOfLoan = new PurposeOfLoan(purposeOfLoanType, purposeOfLoanAmount);
+        PurposeOfLoan purposeOfLoan = new PurposeOfLoan(purposeOfLoanType, purposeOfLoanAmount, period);
 
-        return new Person(personalData, contactData);
+        return new CreditApplication(new Person(personalData, contactData), purposeOfLoan);
     }
 }
